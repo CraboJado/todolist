@@ -11,8 +11,10 @@ function App() {
     setTasks([...tasks,newtask])
   }
 
-
-
+  const deleteTask = id => {
+    const newTasks = tasks.filter ( task  => task.id !== id)
+    setTasks(newTasks)
+  }
 
   return (
     <div className="App">
@@ -21,7 +23,7 @@ function App() {
             <h1 className="text-center">ToDo List</h1>
         </header>
         <TaskForm addTask = { addTask }/>
-        <Tasks tasks = { tasks }  />
+        <Tasks tasks = { tasks } deleteTask = {deleteTask} />
       </main>
     </div>
   );
