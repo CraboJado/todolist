@@ -1,9 +1,6 @@
 import TaskItem from "./TaskItem";
 
-export default function Tasks({ tasks, deleteTask, updateTask }) {
-
- 
-
+export default function Tasks({ tasks, deleteTask, updateTask, removeCheck }) {
   return (
     <>
       <ul className="list-group my-4">
@@ -16,7 +13,11 @@ export default function Tasks({ tasks, deleteTask, updateTask }) {
           />
         ))}
       </ul>
-      <button type="button" className="btn btn-primary  my-3" onClick={()=>{}}>
+      <button
+        type="button"
+        className="btn btn-primary  my-3"
+        onClick={() => removeCheck()}
+      >
         remove check
       </button>
     </>

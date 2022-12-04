@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
-export default function TaskItem({ task, deleteTask, updateTask }) { 
-
-  const [ editable, setEditable ] = useState(false)
+export default function TaskItem({ task, deleteTask, updateTask }) {
+  const [editable, setEditable] = useState(false);
 
   const handleDelet = () => {
     deleteTask(task.id);
@@ -16,19 +15,24 @@ export default function TaskItem({ task, deleteTask, updateTask }) {
     updateTask(newTask, task.id);
   };
 
-  const handleChange = (e) => {
+  const handleCheck = (e) => {
     const newTask = {
       ...task,
-      isDone: e.target.checked
-    }
- 
-    console.log(newTask)
-  }
+      isDone: e.target.checked,
+    };
+    updateTask(newTask, task.id);
+  };
 
   return (
     <li className="list-group-item d-flex align-items-center justify-content-between ps-0">
       <div className="col-1 text-center">
-        <input className="form-check-input" type="checkbox" value=""  onChange = {handleChange}/>
+        <input
+          className="form-check-input"
+          type="checkbox"
+          value=""
+          checked={task.isDone}
+          onChange={handleCheck}
+        />
       </div>
       <div className="col-5 flex-grow-1 me-2">
         {editable ? (
@@ -49,8 +53,8 @@ export default function TaskItem({ task, deleteTask, updateTask }) {
           className="btn btn-primary mx-1"
           onClick={(e) => {
             // e.target.blur()
-            setEditable(!editable)
-            }}
+            setEditable(!editable);
+          }}
         >
           {!editable ? (
             <svg
