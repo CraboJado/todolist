@@ -6,9 +6,9 @@ export default function TaskForm({ addTask }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     if (e.target.task.value === "") {
-      setError(true);
-      return
+        return setError(true);
     }
 
     const newTask = {
